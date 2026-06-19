@@ -1,0 +1,33 @@
+import { FadeIn } from "@/components/fade-in";
+import { SectionHeading } from "@/components/section-heading";
+import { sessionPreviews } from "@/lib/constants";
+
+export function SessionsSection() {
+  return (
+    <section id="sesiones" className="border-b border-line py-16 md:py-24">
+      <div className="container-shell">
+        <FadeIn>
+          <SectionHeading
+            eyebrow="Sesiones"
+            title="Un archivo en construcción."
+            body="Cada sesión podrá guardar artista, fecha, créditos, equipo participante, marcas aliadas, fotos, video y una descripción honesta del día."
+          />
+        </FadeIn>
+
+        <div className="mt-10 grid gap-4 md:grid-cols-3">
+          {sessionPreviews.map((session, index) => (
+            <FadeIn key={session.title} delay={index * 0.06}>
+              <article className="flex min-h-80 flex-col justify-between border border-line bg-paper/70 p-5 transition hover:border-amber/70">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.24em] text-amber">{session.status}</p>
+                  <h3 className="mt-5 font-serif text-5xl leading-none text-cream">{session.title}</h3>
+                </div>
+                <p className="max-w-sm text-base leading-7 text-cream-muted">{session.note}</p>
+              </article>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}

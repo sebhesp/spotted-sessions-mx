@@ -10,7 +10,7 @@ export function SessionsSection() {
           <SectionHeading
             eyebrow="Sesiones"
             title="Un archivo en construcción."
-            body="Cada sesión podrá guardar artista, fecha, créditos, equipo participante, marcas aliadas, fotos, video y una descripción honesta del día."
+            body="Cada sesión será una memoria completa del día: quién tocó, quién cuidó la luz, quién sirvió la mesa, qué marcas acompañaron y qué quedó vibrando después de la última toma."
           />
         </FadeIn>
 

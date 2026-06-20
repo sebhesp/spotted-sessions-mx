@@ -24,6 +24,13 @@ export function Manifesto() {
             </FadeIn>
           ))}
         </div>
+        <FadeIn delay={0.18}>
+          <div className="md:col-start-2">
+            <p className="max-w-2xl font-serif text-3xl leading-tight text-amber md:text-4xl">
+              Una buena sesión no solo se graba. Se hospeda.
+            </p>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

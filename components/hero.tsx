@@ -47,6 +47,10 @@ export function Hero() {
             <span>Una mesa compartida.</span>
             <span>Un equipo que escucha.</span>
           </div>
+          <p className="mt-5 max-w-xl text-sm leading-7 text-cream-muted">
+            No llegas a un set frío. Llegas a una casa creativa donde la música, la comida,
+            la luz y el cuidado tienen el mismo peso.
+          </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {actions.map((action) => (
               <a

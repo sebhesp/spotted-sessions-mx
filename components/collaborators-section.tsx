@@ -28,6 +28,14 @@ export function CollaboratorsSection() {
           </p>
         </FadeIn>
 
+        <FadeIn delay={0.1}>
+          <div className="mt-8 grid gap-3 border-y border-line py-5 text-sm leading-7 text-cream-muted md:grid-cols-3">
+            <span>No todos tienen que estar en todas las fechas.</span>
+            <span>Las sesiones se arman con roles claros y tiempo cuidado.</span>
+            <span>La colaboración debe sentirse responsable, sensible y retribuida.</span>
+          </div>
+        </FadeIn>
+
         <div className="mt-12 grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
           <div className="grid gap-8">
             <div className="rounded-sm border border-line bg-bottle/24 p-4 sm:p-5">

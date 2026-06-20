@@ -22,6 +22,21 @@ export const pillars = [
   "Comunidad",
 ];
 
+export const sessionMoments = [
+  {
+    title: "Antes de grabar",
+    body: "Conversación, café, montaje tranquilo y una mesa que ayuda a bajar el ruido.",
+  },
+  {
+    title: "Durante la toma",
+    body: "Audio atento, luz cálida, cámara cercana y un equipo que entiende cuándo intervenir y cuándo guardar silencio.",
+  },
+  {
+    title: "Después",
+    body: "Créditos claros, memoria visual y una comunidad que puede volver a encontrarse alrededor de la sesión.",
+  },
+];
+
 export const occupiedRoles: Role[] = [
   { name: "Video", group: "Core Team", status: "Ocupado" },
   { name: "Iluminación", group: "Core Team", status: "Ocupado" },

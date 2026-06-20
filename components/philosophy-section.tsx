@@ -18,6 +18,20 @@ export function PhilosophySection() {
               <p className="mt-2 text-sm uppercase tracking-[0.26em] text-amber">
                 Music · Community · Hospitality
               </p>
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="#artistas"
+                  className="inline-flex min-h-12 items-center justify-center bg-amber px-5 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-ink transition hover:bg-cream"
+                >
+                  Aplicar como artista
+                </a>
+                <a
+                  href="#colaboradores"
+                  className="inline-flex min-h-12 items-center justify-center border border-line px-5 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition hover:border-amber hover:text-amber"
+                >
+                  Join SPOTTED
+                </a>
+              </div>
             </div>
           </div>
         </FadeIn>

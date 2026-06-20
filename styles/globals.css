@@ -22,6 +22,7 @@ html {
   background: var(--ink);
   color: var(--cream);
   scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
 }
 
 body {
@@ -55,6 +56,11 @@ select {
 .container-shell {
   width: min(100% - 2rem, 1180px);
   margin-inline: auto;
+}
+
+:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 4px;
 }
 
 .texture {

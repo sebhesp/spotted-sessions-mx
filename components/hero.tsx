@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 
 const actions = [
   { label: "Aplicar como artista", href: "#artistas", primary: true },
-  { label: "Unirme al equipo", href: "#colaboradores" },
+  { label: "Join SPOTTED", href: "#colaboradores" },
   { label: "Colaborar como marca", href: "#marcas" },
 ];
 
@@ -42,6 +42,11 @@ export function Hero() {
             Creamos sesiones musicales en vivo para artistas emergentes, construidas con intención,
             comunidad y cuidado por los detalles.
           </p>
+          <div className="mt-6 grid max-w-2xl gap-3 border-y border-line py-4 text-sm leading-6 text-cream-muted sm:grid-cols-3">
+            <span>Una canción.</span>
+            <span>Una mesa compartida.</span>
+            <span>Un equipo que escucha.</span>
+          </div>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             {actions.map((action) => (
               <a

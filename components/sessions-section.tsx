@@ -1,6 +1,6 @@
 import { FadeIn } from "@/components/fade-in";
 import { SectionHeading } from "@/components/section-heading";
-import { sessionPreviews } from "@/lib/constants";
+import { sessionDetails, sessionPreviews } from "@/lib/constants";
 
 export function SessionsSection() {
   return (
@@ -27,6 +27,21 @@ export function SessionsSection() {
             </FadeIn>
           ))}
         </div>
+
+        <FadeIn delay={0.12}>
+          <div className="mt-8 border border-line bg-paper/48 p-5">
+            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber">
+              Cada sesión podrá documentar
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {sessionDetails.map((detail) => (
+                <span key={detail} className="border border-line px-3 py-2 text-sm text-cream-muted">
+                  {detail}
+                </span>
+              ))}
+            </div>
+          </div>
+        </FadeIn>
       </div>
     </section>
   );

@@ -1,10 +1,12 @@
 import type { FormConfig, Role, SessionPreview } from "@/lib/types";
 
 export const navigation = [
+  { label: "Inicio", href: "#top" },
   { label: "Manifiesto", href: "#manifiesto" },
   { label: "Artistas", href: "#artistas" },
-  { label: "Equipo", href: "#colaboradores" },
+  { label: "Join SPOTTED", href: "#colaboradores" },
   { label: "Marcas", href: "#marcas" },
+  { label: "Equipo", href: "#equipo" },
   { label: "Sesiones", href: "#sesiones" },
 ];
 
@@ -37,7 +39,6 @@ export const openRoles: Role[] = [
   { name: "Fotografía", group: "Producción", status: "Abierto" },
   { name: "BTS", group: "Producción", status: "Abierto" },
   { name: "Producción de campo", group: "Producción", status: "Abierto" },
-  { name: "Gaffer adicional", group: "Producción", status: "Abierto" },
   { name: "Asistente de producción", group: "Producción", status: "Abierto" },
   { name: "Flores", group: "Experiencia", status: "Abierto" },
   { name: "Decoración", group: "Experiencia", status: "Abierto" },
@@ -80,6 +81,17 @@ export const sessionPreviews: SessionPreview[] = [
   },
 ];
 
+export const sessionDetails = [
+  "Artista",
+  "Fecha",
+  "Créditos",
+  "Equipo participante",
+  "Marcas aliadas",
+  "Fotos",
+  "Video",
+  "Descripción",
+];
+
 export const formConfigs: Record<FormConfig["kind"], FormConfig> = {
   artist: {
     kind: "artist",
@@ -109,8 +121,8 @@ export const formConfigs: Record<FormConfig["kind"], FormConfig> = {
         required: true,
       },
       {
-        name: "why",
-        label: "¿Por qué te gustaría hacer una sesión con SPOTTED?",
+        name: "message",
+        label: "Mensaje",
         type: "textarea",
         required: true,
       },
@@ -119,9 +131,9 @@ export const formConfigs: Record<FormConfig["kind"], FormConfig> = {
   collaborator: {
     kind: "collaborator",
     eyebrow: "Postulación de equipo",
-    title: "Dinos dónde puedes cuidar el detalle.",
+    title: "Dinos desde dónde quieres entrar a la sesión.",
     description:
-      "Trabajamos por sesión. Buscamos personas responsables, sensibles y buenas para crear con otras personas.",
+      "Trabajamos por fechas concretas. Buscamos personas responsables, sensibles al detalle y buenas para crear con otras personas.",
     submitLabel: "Postularme al equipo",
     successMessage:
       "Recibimos tu postulación. La guardaremos para las sesiones donde tu rol haga sentido.",

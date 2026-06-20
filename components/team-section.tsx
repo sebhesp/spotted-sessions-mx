@@ -4,7 +4,7 @@ import { occupiedRoles } from "@/lib/constants";
 
 export function TeamSection() {
   return (
-    <section className="border-b border-line bg-bottle/34 py-16 md:py-24">
+    <section id="equipo" className="border-b border-line bg-bottle/34 py-16 md:py-24">
       <div className="container-shell">
         <FadeIn>
           <SectionHeading

@@ -1,8 +1,8 @@
 # SPOTTED Sessions MX
 
-Landing/app para presentar SPOTTED Sessions MX a artistas emergentes, colaboradores creativos, chefs, equipos de hospitalidad, marcas y patrocinadores.
+**SPOTTED Sessions MX** is a landing/app for presenting SPOTTED to emerging artists, creative collaborators, chefs, hospitality teams, brands, and sponsors.
 
-SPOTTED Sessions MX es un hogar creativo para artistas emergentes: sesiones musicales en vivo con dirección creativa, video, iluminación, audio, styling, gastronomía, hospitalidad y comunidad.
+SPOTTED is a creative home for emerging artists. We create live music sessions with intention, community, hospitality, and care for the details around the performance.
 
 > No perseguimos la viralidad vacía. Perseguimos la conexión.
 
@@ -14,17 +14,18 @@ SPOTTED Sessions MX es un hogar creativo para artistas emergentes: sesiones musi
 - Tailwind CSS
 - Framer Motion
 - lucide-react
-- Formularios frontend con validación básica
-- Estructura lista para conectar Supabase después
+- Frontend forms with basic validation
+- Supabase-ready submission layer
+- Vercel-ready configuration
 
-## Correr localmente
+## Local Development
 
 ```bash
 npm install
 npm run dev
 ```
 
-La app corre en:
+Open:
 
 ```txt
 http://localhost:3000
@@ -33,18 +34,19 @@ http://localhost:3000
 ## Scripts
 
 ```bash
-npm run dev
 npm run lint
 npm run typecheck
 npm run build
 npm run start
 ```
 
-## Estructura
+## Project Structure
 
 ```txt
 app/
+  icon.svg
   layout.tsx
+  manifest.ts
   page.tsx
 components/
   application-form.tsx
@@ -62,6 +64,9 @@ components/
   sessions-section.tsx
   team-section.tsx
   what-we-do.tsx
+docs/
+  audit-and-plan-preview.md
+  vercel-preview-checklist.md
 lib/
   constants.ts
   submissions.ts
@@ -72,65 +77,80 @@ styles/
   globals.css
 ```
 
-## Secciones
+## Landing Sections
 
 - Hero
 - Manifiesto
 - Qué hacemos
 - Para artistas
-- Para colaboradores
-- Para marcas y patrocinadores
-- Core Team
-- Sesiones
+- Join SPOTTED / colaboradores
+- Marcas y patrocinadores
+- Equipo actual
+- Sesiones futuras
 - Filosofía final
+- Footer
 
-## Formularios
+## Forms
 
-Hay tres formularios separados:
+The app includes three separate frontend forms:
 
-- Artistas
-- Colaboradores
-- Marcas
+- Artist applications
+- Collaborator applications
+- Brand inquiries
 
-El componente reutilizable vive en `components/application-form.tsx`. Las configuraciones de campos viven en `lib/constants.ts`.
+The reusable form component lives in `components/application-form.tsx`. Field configuration lives in `lib/constants.ts`.
 
-El envío mock está en `lib/submissions.ts`. Para conectar Supabase después, ese archivo es el punto natural para sustituir la simulación por un `insert` a una tabla como:
+The current submission handler is simulated in `lib/submissions.ts`. It is structured so it can later be replaced with Supabase inserts.
+
+Recommended Supabase tables:
 
 - `artist_applications`
 - `collaborator_applications`
 - `brand_inquiries`
 
-Variables preparadas en `.env.example`:
+Environment variables are prepared in `.env.example`:
 
 ```bash
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-## SEO
+When moving from mock submissions to real storage, replace `submitApplication` in `lib/submissions.ts` with a server-side route or server action that inserts into the right table based on `submissionTableByKind`.
 
-La metadata base vive en `app/layout.tsx` e incluye:
+## SEO and Sharing
 
-- title
-- description
+Metadata is configured in `app/layout.tsx`:
+
+- Title
+- Description
+- Canonical URL
 - Open Graph
 - Twitter card
-- imagen principal
+- Manifest
+- Icon
 
-Antes de producción, actualiza `metadataBase` con el dominio real.
+Before production, update `metadataBase` with the final domain.
 
-## Deploy en Vercel
+## Deploy to Vercel
 
-Este proyecto está listo para Vercel con la configuración estándar de Next.js.
+The repository is ready for Vercel preview.
 
-1. Sube el repo a GitHub.
-2. Importa el repo en Vercel.
-3. Framework preset: Next.js.
+1. Import the GitHub repo in Vercel.
+2. Select the Next.js preset.
+3. Use Node.js 22 if prompted.
 4. Build command: `npm run build`.
-5. Output: automático.
+5. Install command: `npm install`.
+6. Deploy.
 
-Cuando se conecte Supabase, agrega las variables de entorno en Vercel.
+The optional `vercel.json` keeps preview settings explicit.
 
-## Dirección visual
+## Production Notes
 
-La identidad usa carbón, crema envejecido, verde botella y ámbar quemado. La intención visual mezcla calidez editorial, fotografía documental, casa creativa, hospitalidad y sesión musical íntima.
+Recommended next steps before collecting real submissions:
+
+- Connect Supabase with server-side form handling.
+- Add spam protection or rate limiting for public forms.
+- Add privacy/contact language near forms.
+- Replace session placeholders with real artists, credits, photos, video, and partner brands.
+- Add the final domain to `metadataBase`.
+- Add analytics only after deciding what matters to measure.

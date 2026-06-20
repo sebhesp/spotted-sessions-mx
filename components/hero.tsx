@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 
 const actions = [
   { label: "Aplicar como artista", href: "#artistas", primary: true },
-  { label: "Join SPOTTED", href: "#colaboradores" },
+  { label: "Unirme al equipo", href: "#colaboradores" },
   { label: "Colaborar como marca", href: "#marcas" },
 ];
 

@@ -29,7 +29,7 @@ export function PhilosophySection() {
                   href="#colaboradores"
                   className="inline-flex min-h-12 items-center justify-center border border-line px-5 py-3 text-sm font-semibold uppercase tracking-[0.16em] text-cream transition hover:border-amber hover:text-amber"
                 >
-                  Join SPOTTED
+                  Unirme al equipo
                 </a>
               </div>
             </div>

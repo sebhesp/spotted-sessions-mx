@@ -17,12 +17,30 @@ export function SessionsSection() {
         <div className="mt-10 grid gap-4 md:grid-cols-3">
           {sessionPreviews.map((session, index) => (
             <FadeIn key={session.title} delay={index * 0.06}>
-              <article className="flex min-h-80 flex-col justify-between border border-line bg-paper/70 p-5 transition hover:border-amber/70">
+              <article className="flex min-h-[28rem] flex-col justify-between border border-line bg-paper/70 p-5 transition hover:-translate-y-0.5 hover:border-amber/70 hover:shadow-warm">
                 <div>
                   <p className="text-xs uppercase tracking-[0.24em] text-amber">{session.status}</p>
-                  <h3 className="mt-5 font-serif text-5xl leading-none text-cream">{session.title}</h3>
+                  <h3 className="mt-5 font-serif text-4xl leading-none text-cream sm:text-5xl">{session.title}</h3>
                 </div>
-                <p className="max-w-sm text-base leading-7 text-cream-muted">{session.note}</p>
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cream-muted">Enfoque</p>
+                  <p className="mt-3 max-w-sm text-base leading-7 text-cream">{session.focus}</p>
+                  <div className="mt-6 border-t border-line pt-4">
+                    <p className="text-xs font-semibold uppercase tracking-[0.22em] text-cream-muted">
+                      Futuro archivo
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                      {sessionDetails.map((detail) => (
+                        <span
+                          key={`${session.title}-${detail}`}
+                          className="border border-line px-2 py-1 text-xs text-cream-muted"
+                        >
+                          {detail}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
               </article>
             </FadeIn>
           ))}

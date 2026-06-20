@@ -47,5 +47,5 @@ export type Role = {
 export type SessionPreview = {
   title: string;
   status: string;
-  note: string;
+  focus: string;
 };

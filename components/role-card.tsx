@@ -18,7 +18,7 @@ export function RoleCard({ role }: RoleCardProps) {
               : "rounded-full border border-cream/15 px-2 py-1 text-[11px] uppercase text-cream-muted"
           }
         >
-          {isOpen ? "Invitación" : role.status}
+          {role.status}
         </span>
       </div>
       <div>

@@ -80,19 +80,19 @@ export const brandCategories = [
 
 export const sessionPreviews: SessionPreview[] = [
   {
-    title: "Session 001",
+    title: "Session 001 — Casa Abierta",
+    status: "En preparación",
+    focus: "Primera sesión piloto con artista emergente.",
+  },
+  {
+    title: "Session 002 — Mesa Compartida",
+    status: "Buscando colaboradores",
+    focus: "Sesión con hospitalidad, cocina y comunidad.",
+  },
+  {
+    title: "Session 003 — Archivo Vivo",
     status: "Próximamente",
-    note: "Primera mesa, primer artista, primera toma.",
-  },
-  {
-    title: "Session 002",
-    status: "En construcción",
-    note: "Una sesión pensada alrededor de sonido, comida y luz cálida.",
-  },
-  {
-    title: "Session 003",
-    status: "Abierta a colaboración",
-    note: "Buscando aliados de hospitalidad, foto y experiencia.",
+    focus: "Documentación visual y musical de artistas emergentes.",
   },
 ];
 

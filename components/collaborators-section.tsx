@@ -17,13 +17,13 @@ export function CollaboratorsSection() {
           <SectionHeading
             eyebrow="Join SPOTTED"
             title="Las grandes experiencias se construyen en equipo."
-            body="SPOTTED funciona por sesiones. No buscamos gente disponible todos los días ni en todas las fechas. Buscamos personas talentosas, responsables y sensibles al detalle que quieran colaborar en fechas específicas y formar parte de una comunidad creativa retribuida."
+            body="SPOTTED funciona por sesiones. No buscamos que todos estén en todas las fechas. Buscamos personas talentosas, responsables y sensibles al detalle, que quieran sumarse a experiencias específicas y formar parte de una comunidad creativa retribuida."
           />
         </FadeIn>
 
         <FadeIn delay={0.08}>
           <p className="mt-8 max-w-3xl text-xl leading-9 text-cream">
-            El trato VIP no es solo para el artista. También es para quien cocina, graba,
+            El trato VIP no es solo para quien está frente al micrófono. También es para quien cocina, graba,
             ilumina, mezcla, viste, acomoda, recibe y cuida los detalles.
           </p>
         </FadeIn>

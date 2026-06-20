@@ -96,6 +96,14 @@ styles/
 - Filosofía final
 - Footer
 
+## Future Sessions Included
+
+- `Session 001 — Casa Abierta`: primera sesión piloto con artista emergente.
+- `Session 002 — Mesa Compartida`: sesión con hospitalidad, cocina y comunidad.
+- `Session 003 — Archivo Vivo`: documentación visual y musical de artistas emergentes.
+
+Each card is prepared to later include artist, date, credits, participating team, allied brands, photos, video, and description.
+
 ## Forms
 
 The app includes three separate frontend forms:

@@ -33,6 +33,7 @@ Validated on `preview-ready-spotted` against `http://127.0.0.1:3002`.
 - HTTP status for `/icon.svg`: `200`
 - H1 count: `1`
 - Required sections found in rendered HTML.
+- Future session cards found: Casa Abierta, Mesa Compartida, Archivo Vivo.
 - Artist, collaborator, and brand forms found in rendered HTML.
 - Requested title and description found in rendered HTML.
 

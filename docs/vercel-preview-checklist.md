@@ -10,6 +10,7 @@
 - Forms submit through a simulated frontend handler and are prepared for Supabase integration.
 - The repository is connected to GitHub on `main`.
 - Preview branch: `preview-ready-spotted`.
+- Future session cards have intentional placeholder content: Casa Abierta, Mesa Compartida, and Archivo Vivo.
 
 ## Vercel setup
 

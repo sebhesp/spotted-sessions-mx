@@ -27,6 +27,9 @@ export function ApplicationForm({ config }: ApplicationFormProps) {
 
   function updateValue(name: string, value: string) {
     setValues((current) => ({ ...current, [name]: value }));
+    if (status === "success") {
+      setStatus("idle");
+    }
     setErrors((current) => {
       const next = { ...current };
       delete next[name];
@@ -61,7 +64,12 @@ export function ApplicationForm({ config }: ApplicationFormProps) {
     }
 
     setStatus("submitting");
-    await submitApplication({ kind: config.kind, values });
+    await submitApplication({
+      kind: config.kind,
+      values,
+      submittedAt: new Date().toISOString(),
+      source: "spotted-sessions-mx",
+    });
     setStatus("success");
     setValues(initialValues);
   }
@@ -93,6 +101,7 @@ export function ApplicationForm({ config }: ApplicationFormProps) {
             {field.type === "textarea" ? (
               <textarea
                 id={fieldId}
+                name={field.name}
                 value={values[field.name]}
                 onChange={(event) => updateValue(field.name, event.target.value)}
                 placeholder={field.placeholder}
@@ -104,6 +113,7 @@ export function ApplicationForm({ config }: ApplicationFormProps) {
             ) : field.type === "select" ? (
               <select
                 id={fieldId}
+                name={field.name}
                 value={values[field.name]}
                 onChange={(event) => updateValue(field.name, event.target.value)}
                 aria-invalid={Boolean(errors[field.name])}
@@ -120,10 +130,12 @@ export function ApplicationForm({ config }: ApplicationFormProps) {
             ) : (
               <input
                 id={fieldId}
+                name={field.name}
                 value={values[field.name]}
                 onChange={(event) => updateValue(field.name, event.target.value)}
                 type={field.type === "url" ? "url" : "text"}
                 placeholder={field.placeholder}
+                autoComplete={field.autoComplete}
                 aria-invalid={Boolean(errors[field.name])}
                 aria-describedby={errors[field.name] ? errorId : undefined}
                 className="border border-line bg-paper px-3 py-3 text-cream outline-none transition placeholder:text-cream-muted/55 focus:border-amber"
@@ -150,7 +162,7 @@ export function ApplicationForm({ config }: ApplicationFormProps) {
       </button>
 
       {status === "success" ? (
-        <p className="mt-4 border border-bottle-soft bg-bottle/45 p-3 text-sm leading-6 text-cream">
+        <p aria-live="polite" className="mt-4 border border-bottle-soft bg-bottle/45 p-3 text-sm leading-6 text-cream">
           {config.successMessage}
         </p>
       ) : null}

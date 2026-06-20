@@ -9,6 +9,7 @@ export type FormField = {
   required?: boolean;
   placeholder?: string;
   options?: string[];
+  autoComplete?: string;
 };
 
 export type FormConfig = {
@@ -24,6 +25,8 @@ export type FormConfig = {
 export type ApplicationPayload = {
   kind: FormKind;
   values: Record<string, string>;
+  submittedAt: string;
+  source: "spotted-sessions-mx";
 };
 
 export type SubmissionResult = {

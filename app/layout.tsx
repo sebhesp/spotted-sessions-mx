@@ -4,15 +4,29 @@ import "@/styles/globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://spotted-sessions-mx.vercel.app"),
   title: {
-    default: "SPOTTED Sessions MX",
+    default: "SPOTTED Sessions MX | A home for emerging artists",
     template: "%s | SPOTTED Sessions MX",
   },
   description:
-    "A home for emerging artists. Sesiones musicales en vivo construidas con intención, comunidad y cuidado por los detalles.",
+    "Sesiones musicales en vivo para artistas emergentes, construidas con intención, comunidad, hospitalidad y cuidado por los detalles.",
+  keywords: [
+    "SPOTTED Sessions MX",
+    "artistas emergentes",
+    "sesiones musicales",
+    "música en vivo",
+    "hospitalidad creativa",
+    "CDMX",
+  ],
+  icons: {
+    icon: "/icon.svg",
+  },
+  alternates: {
+    canonical: "/",
+  },
   openGraph: {
-    title: "SPOTTED Sessions MX",
+    title: "SPOTTED Sessions MX | A home for emerging artists",
     description:
-      "Creamos sesiones musicales en vivo para artistas emergentes con música, comunidad, hospitalidad y dirección creativa.",
+      "Sesiones musicales en vivo para artistas emergentes, construidas con intención, comunidad, hospitalidad y cuidado por los detalles.",
     url: "https://spotted-sessions-mx.vercel.app",
     siteName: "SPOTTED Sessions MX",
     images: [
@@ -28,8 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "SPOTTED Sessions MX",
-    description: "A home for emerging artists.",
+    title: "SPOTTED Sessions MX | A home for emerging artists",
+    description:
+      "Sesiones musicales en vivo para artistas emergentes, construidas con intención, comunidad, hospitalidad y cuidado por los detalles.",
     images: ["/spotted-session-hero.png"],
   },
 };

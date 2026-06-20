@@ -104,9 +104,9 @@ export const formConfigs: Record<FormConfig["kind"], FormConfig> = {
       "Recibimos tu aplicación. Si la sesión encuentra su momento, te escribiremos para conversar con cuidado.",
     fields: [
       { name: "artistName", label: "Nombre artístico", type: "text", required: true },
-      { name: "contactName", label: "Nombre de contacto", type: "text", required: true },
-      { name: "city", label: "Ciudad", type: "text", required: true },
-      { name: "instagram", label: "Instagram", type: "text", required: true, placeholder: "@tu_proyecto" },
+      { name: "contactName", label: "Nombre de contacto", type: "text", required: true, autoComplete: "name" },
+      { name: "city", label: "Ciudad", type: "text", required: true, autoComplete: "address-level2" },
+      { name: "instagram", label: "Instagram", type: "text", required: true, placeholder: "@tu_proyecto", autoComplete: "url" },
       {
         name: "musicLink",
         label: "Spotify / Apple Music / YouTube",
@@ -139,8 +139,8 @@ export const formConfigs: Record<FormConfig["kind"], FormConfig> = {
       "Recibimos tu postulación. La guardaremos para las sesiones donde tu rol haga sentido.",
     fields: [
       { name: "name", label: "Nombre", type: "text", required: true },
-      { name: "city", label: "Ciudad", type: "text", required: true },
-      { name: "instagram", label: "Instagram", type: "text", required: true },
+      { name: "city", label: "Ciudad", type: "text", required: true, autoComplete: "address-level2" },
+      { name: "instagram", label: "Instagram", type: "text", required: true, autoComplete: "url" },
       { name: "primaryRole", label: "Rol principal", type: "text", required: true },
       { name: "secondaryRoles", label: "Roles secundarios", type: "text" },
       { name: "portfolio", label: "Portafolio", type: "url", placeholder: "https://" },
@@ -169,8 +169,8 @@ export const formConfigs: Record<FormConfig["kind"], FormConfig> = {
     successMessage:
       "Recibimos tu mensaje. Si la colaboración se siente natural, seguiremos la conversación.",
     fields: [
-      { name: "brand", label: "Marca", type: "text", required: true },
-      { name: "contact", label: "Contacto", type: "text", required: true },
+      { name: "brand", label: "Marca", type: "text", required: true, autoComplete: "organization" },
+      { name: "contact", label: "Contacto", type: "text", required: true, autoComplete: "name" },
       {
         name: "category",
         label: "Categoría",

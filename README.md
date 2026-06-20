@@ -31,6 +31,12 @@ Open:
 http://localhost:3000
 ```
 
+Current preview work is on:
+
+```bash
+git switch preview-ready-spotted
+```
+
 ## Scripts
 
 ```bash
@@ -136,11 +142,12 @@ Before production, update `metadataBase` with the final domain.
 The repository is ready for Vercel preview.
 
 1. Import the GitHub repo in Vercel.
-2. Select the Next.js preset.
-3. Use Node.js 22 if prompted.
-4. Build command: `npm run build`.
-5. Install command: `npm install`.
-6. Deploy.
+2. Select the branch `preview-ready-spotted` for a preview deployment, or merge it into `main` when approved.
+3. Select the Next.js preset.
+4. Use Node.js 22 if prompted.
+5. Build command: `npm run build`.
+6. Install command: `npm install`.
+7. Deploy.
 
 The optional `vercel.json` keeps preview settings explicit.
 
@@ -154,3 +161,4 @@ Recommended next steps before collecting real submissions:
 - Replace session placeholders with real artists, credits, photos, video, and partner brands.
 - Add the final domain to `metadataBase`.
 - Add analytics only after deciding what matters to measure.
+- Run a final visual pass in Vercel preview after the domain, Supabase, and real session content are connected.

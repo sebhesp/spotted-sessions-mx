@@ -9,15 +9,17 @@
 - The app has SEO metadata, Open Graph image, manifest, and icon.
 - Forms submit through a simulated frontend handler and are prepared for Supabase integration.
 - The repository is connected to GitHub on `main`.
+- Preview branch: `preview-ready-spotted`.
 
 ## Vercel setup
 
 1. Import `sebhesp/spotted-sessions-mx` in Vercel.
-2. Use the Next.js preset.
-3. Keep the default output settings.
-4. Use Node.js 22 if prompted.
-5. Build command: `npm run build`.
-6. Install command: `npm install`.
+2. Select `preview-ready-spotted` for preview, or merge into `main` when approved.
+3. Use the Next.js preset.
+4. Keep the default output settings.
+5. Use Node.js 22 if prompted.
+6. Build command: `npm run build`.
+7. Install command: `npm install`.
 
 ## Before production
 

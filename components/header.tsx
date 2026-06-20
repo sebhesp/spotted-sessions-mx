@@ -26,6 +26,8 @@ export function Header() {
           type="button"
           className="inline-flex h-10 w-10 items-center justify-center border border-line text-cream md:hidden"
           onClick={() => setIsOpen((value) => !value)}
+          aria-controls="mobile-navigation"
+          aria-expanded={isOpen}
           aria-label={isOpen ? "Cerrar navegación" : "Abrir navegación"}
         >
           {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
@@ -33,7 +35,7 @@ export function Header() {
       </div>
 
       {isOpen ? (
-        <nav className="border-t border-line bg-ink px-4 py-4 md:hidden">
+        <nav id="mobile-navigation" aria-label="Navegación móvil" className="border-t border-line bg-ink px-4 py-4 md:hidden">
           <div className="grid gap-2">
             {navigation.map((item) => (
               <a

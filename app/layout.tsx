@@ -20,6 +20,9 @@ export const metadata: Metadata = {
   icons: {
     icon: "/icon.svg",
   },
+  authors: [{ name: "SPOTTED Sessions MX" }],
+  creator: "SPOTTED Sessions MX",
+  publisher: "SPOTTED Sessions MX",
   alternates: {
     canonical: "/",
   },

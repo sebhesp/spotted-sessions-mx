@@ -50,6 +50,10 @@ export function ApplicationForm({ config }: ApplicationFormProps) {
       if (field.type === "url" && value && !/^https?:\/\/.+\..+/i.test(value)) {
         nextErrors[field.name] = "Comparte una liga completa, empezando con https://";
       }
+
+      if (field.minLength && value && value.length < field.minLength) {
+        nextErrors[field.name] = `Danos un poco más de contexto (${field.minLength} caracteres mínimo).`;
+      }
     }
 
     setErrors(nextErrors);
@@ -77,6 +81,8 @@ export function ApplicationForm({ config }: ApplicationFormProps) {
   return (
     <form
       onSubmit={handleSubmit}
+      aria-busy={status === "submitting"}
+      aria-label={config.title}
       className="border border-line bg-ink/72 p-4 shadow-soft backdrop-blur sm:p-6"
       noValidate
     >
@@ -90,13 +96,26 @@ export function ApplicationForm({ config }: ApplicationFormProps) {
         {config.fields.map((field) => {
           const fieldId = `${config.kind}-${field.name}`;
           const errorId = `${fieldId}-error`;
+          const helpId = `${fieldId}-help`;
+          const describedBy = [
+            field.helpText ? helpId : undefined,
+            errors[field.name] ? errorId : undefined,
+          ]
+            .filter(Boolean)
+            .join(" ");
 
           return (
           <div key={field.name} className="grid gap-2 text-sm text-cream">
-            <label htmlFor={fieldId} className="flex items-center justify-between gap-3">
+            <label htmlFor={fieldId} className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
               <span>{field.label}</span>
               {field.required ? <span className="text-xs uppercase text-amber">Requerido</span> : null}
             </label>
+
+            {field.helpText ? (
+              <p id={helpId} className="text-xs leading-5 text-cream-muted">
+                {field.helpText}
+              </p>
+            ) : null}
 
             {field.type === "textarea" ? (
               <textarea
@@ -107,7 +126,7 @@ export function ApplicationForm({ config }: ApplicationFormProps) {
                 placeholder={field.placeholder}
                 rows={4}
                 aria-invalid={Boolean(errors[field.name])}
-                aria-describedby={errors[field.name] ? errorId : undefined}
+                aria-describedby={describedBy || undefined}
                 className="min-h-32 resize-y border border-line bg-paper px-3 py-3 text-cream outline-none transition placeholder:text-cream-muted/55 focus:border-amber"
               />
             ) : field.type === "select" ? (
@@ -117,7 +136,7 @@ export function ApplicationForm({ config }: ApplicationFormProps) {
                 value={values[field.name]}
                 onChange={(event) => updateValue(field.name, event.target.value)}
                 aria-invalid={Boolean(errors[field.name])}
-                aria-describedby={errors[field.name] ? errorId : undefined}
+                aria-describedby={describedBy || undefined}
                 className="border border-line bg-paper px-3 py-3 text-cream outline-none transition focus:border-amber"
               >
                 <option value="">Selecciona una opción</option>
@@ -137,13 +156,13 @@ export function ApplicationForm({ config }: ApplicationFormProps) {
                 placeholder={field.placeholder}
                 autoComplete={field.autoComplete}
                 aria-invalid={Boolean(errors[field.name])}
-                aria-describedby={errors[field.name] ? errorId : undefined}
+                aria-describedby={describedBy || undefined}
                 className="border border-line bg-paper px-3 py-3 text-cream outline-none transition placeholder:text-cream-muted/55 focus:border-amber"
               />
             )}
 
             {errors[field.name] ? (
-              <span id={errorId} className="text-sm text-amber">
+              <span id={errorId} aria-live="polite" className="text-sm text-amber">
                 {errors[field.name]}
               </span>
             ) : null}

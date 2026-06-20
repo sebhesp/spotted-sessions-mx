@@ -10,6 +10,8 @@ export type FormField = {
   placeholder?: string;
   options?: string[];
   autoComplete?: string;
+  helpText?: string;
+  minLength?: number;
 };
 
 export type FormConfig = {

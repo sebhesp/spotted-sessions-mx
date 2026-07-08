@@ -1,107 +1,102 @@
-# SPOTTED.
+# SPOTTED Sessions
 
-SPOTTED is a Next.js web app foundation for a music and cultural discovery platform focused on emerging talent, intimate events, audiovisual sessions, and editorial curation.
+SPOTTED Sessions es una plataforma audiovisual de sesiones musicales intimas en Mexico. El concepto central es **El Cuarto de Atras**: un espacio privado que normalmente permanece cerrado y que, durante cada sesion, se vuelve escenario.
 
-Concept line:
+Tagline: **When no one's watching... Spotted.**
 
-> Talento emergente, capturado antes del ruido.
-
-SPOTTED Sessions documents the moment an emerging artist enters the frame.
+SPOTTED acompana, escucha, amplifica, eleva, se adapta, documenta y crea junto con el artista. No comunica que descubre artistas ni promete fama futura.
 
 ## Stack
 
-- Next.js with App Router
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- lucide-react
-- Mock data in `lib/data.ts`
-- Mobile-first responsive layout
+- Next.js 15, App Router, React 19 y TypeScript.
+- Tailwind CSS con tokens de marca.
+- Framer Motion usado de forma puntual y con `prefers-reduced-motion`.
+- lucide-react para iconografia funcional.
+- Formularios via route handler y Supabase REST.
+- Contenido local tipado listo para migrar a CMS.
 
-## Local Commands
+## Rutas
+
+- `/` Home editorial con hero, ultima sesion, valores, sesiones, artistas, colaboradores, hospitalidad, equipo y marcas.
+- `/sessions` Archivo de sesiones con estados `published`, `upcoming` y `draft`.
+- `/sessions/[slug]` Ficha individual con video placeholder, fotos, creditos, musicos, audio, marcas y metadata dinamica.
+- `/about` Manifiesto, El Cuarto de Atras, valores y equipo.
+- `/join` Formularios para artistas y colaboradores.
+- `/brands` Propuesta y formulario para marcas.
+- `/events` Redirige a `/sessions` por compatibilidad con la ruta legacy.
+
+## Desarrollo
 
 ```bash
 npm install
 npm run dev
 npm run lint
+npm run typecheck
+npm run test
 npm run build
 ```
 
-The app should run at `http://localhost:3000`.
+La app local corre en `http://localhost:3000`.
 
-## Main Structure
-
-```txt
-app/
-  page.tsx
-  layout.tsx
-  globals.css
-  about/page.tsx
-  events/page.tsx
-  sessions/page.tsx
-  sessions/[slug]/page.tsx
-components/
-  ArtistCodeTag.tsx
-  BrandStamp.tsx
-  Button.tsx
-  EventCard.tsx
-  Footer.tsx
-  FrameCorners.tsx
-  Header.tsx
-  HeroSpotlight.tsx
-  MarqueeText.tsx
-  NoiseOverlay.tsx
-  SectionLabel.tsx
-  SessionCard.tsx
-lib/
-  data.ts
-  utils.ts
-```
-
-## Routes
-
-- `/` - SPOTTED home with hero, featured sessions, upcoming events, and manifesto block.
-- `/sessions` - SPOTTED Sessions archive with visual filters and session cards.
-- `/sessions/[slug]` - Session detail with cinematic placeholder, technical sheet, artist profile, and gallery.
-- `/events` - Event listings with ticket/poster visual language.
-- `/about` - Brand DNA, Sessions definition, manifesto, keywords, and future vision.
-
-## Brand System
-
-Initial CSS variables live in `app/globals.css`:
-
-```css
---background: #050505;
---foreground: #F2F2F0;
---muted: #7A7A7A;
---border: #242424;
---red: #FF2D2D;
---acid: #A6FF00;
---card: #0B0B0B;
-```
-
-The current visual direction uses high contrast, subtle noise, camera frame marks, technical labels, session codes, and documentary-style placeholders.
-
-## GitHub Setup
-
-Git is already initialized locally. GitHub CLI was not available in this environment, so create and connect the remote manually:
+## Variables
 
 ```bash
-gh repo create spotted-app --private --source=. --remote=origin --push
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
+NEXT_PUBLIC_SUPABASE_URL=
+NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-Or create an empty repository named `spotted-app` in GitHub, then run:
+`SUPABASE_SERVICE_ROLE_KEY` no es necesaria para el MVP porque los inserts se hacen desde un route handler usando anon key y RLS con politicas de insert.
 
-```bash
-git remote add origin https://github.com/YOUR_USER/spotted-app.git
-git branch -M main
-git push -u origin main
-```
+## Supabase
 
-## Recommended Next Steps
+1. Crear un proyecto en Supabase.
+2. Ejecutar `supabase/schema.sql` en el SQL editor.
+3. Copiar `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+4. Agregar esas variables en `.env.local` y en Vercel.
+5. Probar un formulario desde `/join` o `/brands`.
 
-- Replace visual placeholders with real stills, session photography, or generated editorial assets.
-- Add persistent filters for Sessions and Events.
-- Add artist profile pages and event detail pages.
-- Connect a CMS or content layer for sessions, events, and editorial notes.
-- Add ticketing/newsletter capture once the first event flow is defined.
+Si las variables no existen, los formularios validan campos pero devuelven un mensaje claro de configuracion en desarrollo. No se simula guardado.
+
+## Contenido
+
+- Las sesiones viven en `content/sessions.json`.
+- Los valores, equipo y roles viven en `content/site.ts`.
+- Los tipos viven en `lib/types.ts`.
+
+Para agregar una sesion:
+
+1. Duplicar un objeto en `content/sessions.json`.
+2. Asignar `id`, `slug`, `status`, `date`, artista, track, imagen y creditos.
+3. Usar `placeholder: true` hasta que el contenido sea real.
+4. Reemplazar imagenes por assets autorizados en `public/images`.
+5. Ejecutar `npm run typecheck && npm run test && npm run build`.
+
+## Equipo y roles
+
+- Equipo actual: editar `teamMembers` en `content/site.ts`.
+- Roles de colaboracion: editar `collaborationRoles` en `content/site.ts`.
+- Los roles ocupados no se presentan como cerrados permanentemente; solo como cubiertos ahora.
+
+## Branding
+
+Los placeholders viven en:
+
+- `public/brand/spotted-isotype.svg`
+- `public/brand/spotted-wordmark.svg`
+- `public/brand/spotted-lockup.svg`
+
+Las rutas estan centralizadas en `lib/brand.ts`. Cuando llegue el logo final, reemplazar esos SVG sin cambiar componentes.
+
+## Deploy
+
+El objetivo de despliegue es Vercel. Este proyecto no depende de GitHub Pages; `sebhesp.github.io/spotted-sessions-mx/` puede seguir en 404 si Pages no esta configurado como sitio estatico.
+
+Ver `docs/vercel-deployment.md` para pasos exactos.
+
+## Limitaciones conocidas
+
+- Sesiones, artistas, fotos, videos y marcas son placeholder.
+- Supabase requiere variables reales para guardar formularios.
+- No hay CMS todavia; el modelo local esta preparado para migracion.
+- No hay remote Git configurado en este checkout local, por lo que el PR requiere conectar `origin`.

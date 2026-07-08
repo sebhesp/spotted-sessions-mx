@@ -1,18 +1,32 @@
 import Link from "next/link";
+import { brandCopy } from "@/lib/brand";
+
+const footerLinks = [
+  { href: "/sessions", label: "Sesiones" },
+  { href: "/about", label: "Sobre SPOTTED" },
+  { href: "/join", label: "Aplicar" },
+  { href: "/brands", label: "Marcas" },
+];
 
 export function Footer() {
   return (
-    <footer className="border-t border-border py-10">
+    <footer className="border-t border-border bg-black/30 py-10">
       <div className="spotted-container grid gap-8 text-sm text-muted md:grid-cols-[1fr_auto]">
         <div>
-          <p className="display-type text-2xl font-black text-foreground">SPOTTED.</p>
-          <p className="mt-2 max-w-xl">Talento emergente, capturado antes del ruido.</p>
+          <p className="display-type text-3xl text-cream">SPOTTED</p>
+          <p className="mt-2 max-w-xl">{brandCopy.tagline}</p>
+          <p className="mt-4 max-w-xl">
+            Una plataforma audiovisual para sesiones musicales intimas en Mexico. Acompanamos,
+            escuchamos y documentamos.
+          </p>
         </div>
-        <div className="flex flex-wrap gap-4 uppercase">
-          <Link href="/sessions" className="hover:text-red">Sessions</Link>
-          <Link href="/events" className="hover:text-red">Events</Link>
-          <Link href="/about" className="hover:text-red">About</Link>
-        </div>
+        <nav aria-label="Navegacion de pie" className="flex flex-wrap gap-3 md:justify-end">
+          {footerLinks.map((link) => (
+            <Link key={link.href} href={link.href} className="min-h-11 px-1 py-3 hover:text-cream">
+              {link.label}
+            </Link>
+          ))}
+        </nav>
       </div>
     </footer>
   );

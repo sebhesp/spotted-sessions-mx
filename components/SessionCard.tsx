@@ -1,49 +1,63 @@
-"use client";
-
+import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
-import { ArtistCodeTag } from "@/components/ArtistCodeTag";
-import { FrameCorners } from "@/components/FrameCorners";
-import type { Session } from "@/lib/data";
+import { FadeIn } from "@/components/FadeIn";
+import type { Session } from "@/lib/types";
 
 type SessionCardProps = {
   session: Session;
   index?: number;
+  priority?: boolean;
 };
 
-export function SessionCard({ session, index = 0 }: SessionCardProps) {
+const statusLabel: Record<Session["status"], string> = {
+  published: "Publicado",
+  upcoming: "Proxima",
+  draft: "Borrador",
+};
+
+export function SessionCard({ session, index = 0, priority = false }: SessionCardProps) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 18 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.45, delay: index * 0.06 }}
-    >
-      <Link
-        href={`/sessions/${session.slug}`}
-        className="group relative block min-h-[28rem] overflow-hidden border border-border bg-card transition hover:border-red hover:shadow-redline"
-      >
-        <div className={`absolute inset-0 bg-gradient-to-br ${session.imageTone}`} />
-        <div className="scanline absolute inset-0 opacity-30" />
-        <FrameCorners className="opacity-0 transition group-hover:opacity-100" />
-        <div className="relative flex min-h-[28rem] flex-col justify-between p-5">
-          <div className="flex items-start justify-between gap-3">
-            <ArtistCodeTag code={session.id} status={session.status} />
-            <ArrowUpRight className="h-5 w-5 text-muted transition group-hover:text-red" />
-          </div>
-          <div>
-            <p className="text-xs uppercase text-muted">{session.location} / {session.date}</p>
-            <h3 className="display-type mt-3 text-5xl font-black leading-none">{session.artist}</h3>
-            <p className="mt-2 text-lg text-foreground">"{session.track}"</p>
-            <p className="mt-5 max-w-sm text-sm leading-relaxed text-muted">{session.logline}</p>
-            <div className="mt-6 flex flex-wrap gap-2 text-[11px] uppercase text-muted">
-              <span className="border border-border px-2 py-1">{session.format}</span>
-              <span className="border border-border px-2 py-1">Before the noise</span>
+    <FadeIn delay={index * 0.05}>
+      <article className="group h-full overflow-hidden rounded-sm border border-border bg-card transition hover:border-cream/42">
+        <Link href={`/sessions/${session.slug}`} className="grid h-full min-h-[31rem] grid-rows-[minmax(16rem,1fr)_auto]">
+          <div className="relative overflow-hidden">
+            <Image
+              src={session.image}
+              alt={session.imageAlt}
+              fill
+              priority={priority}
+              sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
+              className="object-cover transition duration-700 group-hover:scale-[1.03]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/72 via-black/10 to-transparent" />
+            <div className="absolute left-4 top-4 rounded-sm border border-cream/24 bg-black/46 px-3 py-2 text-xs uppercase tracking-[0.16em] text-cream">
+              {session.id}
+            </div>
+            <div className="absolute right-4 top-4 rounded-sm bg-cream px-3 py-2 text-xs uppercase tracking-[0.16em] text-black">
+              {statusLabel[session.status]}
             </div>
           </div>
-        </div>
-      </Link>
-    </motion.article>
+          <div className="p-5">
+            <div className="flex items-start justify-between gap-4">
+              <div>
+                <p className="credit-type text-xs uppercase tracking-[0.18em] text-muted">
+                  {session.location} / {new Date(session.date).getFullYear()}
+                </p>
+                <h3 className="display-type mt-3 text-4xl leading-none text-cream">
+                  {session.artist.name}
+                </h3>
+                <p className="mt-2 text-lg text-cream/90">"{session.track.title}"</p>
+              </div>
+              <ArrowUpRight aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-burnt-orange" />
+            </div>
+            <p className="mt-5 text-sm leading-6 text-muted">{session.summary}</p>
+            {session.placeholder ? (
+              <p className="mt-5 text-xs uppercase tracking-[0.18em] text-cream/52">Contenido placeholder</p>
+            ) : null}
+          </div>
+        </Link>
+      </article>
+    </FadeIn>
   );
 }

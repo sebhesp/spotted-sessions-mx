@@ -1,26 +1,39 @@
+import Image from "next/image";
 import Link from "next/link";
-import { Radio } from "lucide-react";
+import { brandAssets, brandCopy } from "@/lib/brand";
 
 const navItems = [
-  { href: "/sessions", label: "Sessions" },
-  { href: "/events", label: "Events" },
-  { href: "/about", label: "About" },
+  { href: "/sessions", label: "Sesiones" },
+  { href: "/about", label: "Sobre" },
+  { href: "/join", label: "Join" },
+  { href: "/brands", label: "Marcas" },
 ];
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-40 border-b border-border bg-background/82 backdrop-blur-xl">
-      <div className="spotted-container flex min-h-16 items-center justify-between gap-4">
-        <Link href="/" className="display-type flex items-center gap-2 text-2xl font-black uppercase">
-          <Radio className="h-5 w-5 text-red" />
-          SPOTTED.
+    <header className="sticky top-0 z-40 border-b border-border bg-charcoal/88 backdrop-blur-xl">
+      <div className="spotted-container flex min-h-16 flex-wrap items-center justify-between gap-3 py-3">
+        <Link
+          href="/"
+          className="flex min-h-11 items-center gap-3 rounded-sm"
+          aria-label={`${brandCopy.shortName} inicio`}
+        >
+          <Image
+            src={brandAssets.isotype}
+            alt=""
+            width={34}
+            height={34}
+            priority
+            aria-hidden="true"
+          />
+          <span className="display-type text-2xl leading-none text-cream">SPOTTED</span>
         </Link>
-        <nav className="flex items-center gap-1 text-xs uppercase text-muted sm:gap-3">
+        <nav aria-label="Navegacion principal" className="flex flex-wrap items-center gap-1 text-sm">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className="border border-transparent px-2 py-2 transition hover:border-red hover:text-foreground sm:px-3"
+              className="min-h-11 rounded-sm px-3 py-3 text-cream/76 transition hover:text-cream focus-visible:text-cream"
             >
               {item.label}
             </Link>

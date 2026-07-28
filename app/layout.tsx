@@ -1,52 +1,52 @@
-import type { Metadata } from "next";
-import "@/styles/globals.css";
+import type { Metadata, Viewport } from "next";
+import "./globals.css";
+import { Footer } from "@/components/Footer";
+import { Header } from "@/components/Header";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://spotted-sessions-mx.vercel.app"),
+  metadataBase: new URL(siteUrl),
   title: {
-    default: "SPOTTED Sessions MX | A home for emerging artists",
-    template: "%s | SPOTTED Sessions MX",
+    default: "SPOTTED Sessions | Sesiones musicales intimas en Mexico",
+    template: "%s | SPOTTED Sessions",
   },
   description:
-    "Sesiones musicales en vivo para artistas emergentes, construidas con intención, comunidad, hospitalidad y cuidado por los detalles.",
-  keywords: [
-    "SPOTTED Sessions MX",
-    "artistas emergentes",
-    "sesiones musicales",
-    "música en vivo",
-    "hospitalidad creativa",
-    "CDMX",
-  ],
-  icons: {
-    icon: "/icon.svg",
-  },
+    "SPOTTED Sessions acompana, escucha y documenta sesiones musicales intimas desde El Cuarto de Atras.",
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "SPOTTED Sessions MX | A home for emerging artists",
+    type: "website",
+    locale: "es_MX",
+    url: "/",
+    siteName: "SPOTTED Sessions",
+    title: "SPOTTED Sessions",
     description:
-      "Sesiones musicales en vivo para artistas emergentes, construidas con intención, comunidad, hospitalidad y cuidado por los detalles.",
-    url: "https://spotted-sessions-mx.vercel.app",
-    siteName: "SPOTTED Sessions MX",
+      "Sesiones musicales intimas en Mexico. When no one's watching... Spotted.",
     images: [
       {
-        url: "/spotted-session-hero.png",
-        width: 1792,
+        url: "/images/back-room-hero.webp",
+        width: 1536,
         height: 1024,
-        alt: "Una sesión musical íntima de SPOTTED Sessions MX.",
+        alt: "Cuarto privado preparado como escenario intimo para SPOTTED Sessions.",
       },
     ],
-    locale: "es_MX",
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "SPOTTED Sessions MX | A home for emerging artists",
-    description:
-      "Sesiones musicales en vivo para artistas emergentes, construidas con intención, comunidad, hospitalidad y cuidado por los detalles.",
-    images: ["/spotted-session-hero.png"],
+    title: "SPOTTED Sessions",
+    description: "When no one's watching... Spotted.",
+    images: ["/images/back-room-hero.webp"],
   },
+  icons: {
+    icon: "/icon.svg",
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0F0F0E",
+  colorScheme: "dark",
 };
 
 export default function RootLayout({
@@ -57,8 +57,12 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body>
-        <div className="texture" aria-hidden="true" />
+        <a href="#main-content" className="skip-link">
+          Saltar al contenido
+        </a>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

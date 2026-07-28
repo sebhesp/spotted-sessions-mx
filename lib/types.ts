@@ -1,49 +1,81 @@
-export type FormKind = "artist" | "collaborator" | "brand";
+export type SessionStatus = "published" | "upcoming" | "draft";
 
-export type FieldType = "text" | "url" | "textarea" | "select";
-
-export type FormField = {
-  name: string;
+export type ArtistLink = {
   label: string;
-  type: FieldType;
-  required?: boolean;
-  placeholder?: string;
-  options?: string[];
-  autoComplete?: string;
+  href: string;
 };
 
-export type FormConfig = {
-  kind: FormKind;
-  eyebrow: string;
-  title: string;
-  description: string;
-  submitLabel: string;
-  successMessage: string;
-  fields: FormField[];
-};
-
-export type ApplicationPayload = {
-  kind: FormKind;
-  values: Record<string, string>;
-  submittedAt: string;
-  source: "spotted-sessions-mx";
-};
-
-export type SubmissionResult = {
-  ok: boolean;
-  id: string;
-};
-
-export type RoleStatus = "Ocupado" | "Abierto";
-
-export type Role = {
+export type Artist = {
   name: string;
-  group: string;
-  status: RoleStatus;
+  city: string;
+  bio: string;
+  links: ArtistLink[];
 };
 
-export type SessionPreview = {
+export type Track = {
   title: string;
-  status: string;
+  duration?: string;
+  description: string;
+};
+
+export type Credit = {
+  area: string;
+  name: string;
+};
+
+export type BrandPartner = {
+  name: string;
+  integration: string;
+  status: "placeholder" | "confirmed";
+};
+
+export type SessionPhoto = {
+  src: string;
+  alt: string;
+};
+
+export type SessionVideo = {
+  embedUrl?: string;
+  poster: string;
+  caption: string;
+};
+
+export type Session = {
+  id: string;
+  slug: string;
+  status: SessionStatus;
+  featured: boolean;
+  date: string;
+  location: string;
+  artist: Artist;
+  track: Track;
+  summary: string;
+  description: string;
+  image: string;
+  imageAlt: string;
+  video: SessionVideo;
+  photos: SessionPhoto[];
+  credits: Credit[];
+  musicians: string[];
+  hospitality: string;
+  brandPartners: BrandPartner[];
+  audioNotes: string;
+  placeholder: boolean;
+};
+
+export type TeamMember = {
+  name: string;
+  role: string;
+  status: "occupied" | "rotating";
   note: string;
 };
+
+export type Role = {
+  id: string;
+  label: string;
+  category: string;
+  status: "open" | "occupied" | "flexible";
+  description: string;
+};
+
+export type ApplicationKind = "artist" | "collaborator" | "brand";

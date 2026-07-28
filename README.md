@@ -1,156 +1,102 @@
-# SPOTTED Sessions MX
+# SPOTTED Sessions
 
-**SPOTTED Sessions MX** is a landing/app for presenting SPOTTED to emerging artists, creative collaborators, chefs, hospitality teams, brands, and sponsors.
+SPOTTED Sessions es una plataforma audiovisual de sesiones musicales intimas en Mexico. El concepto central es **El Cuarto de Atras**: un espacio privado que normalmente permanece cerrado y que, durante cada sesion, se vuelve escenario.
 
-SPOTTED is a creative home for emerging artists. We create live music sessions with intention, community, hospitality, and care for the details around the performance.
+Tagline: **When no one's watching... Spotted.**
 
-> No perseguimos la viralidad vacía. Perseguimos la conexión.
+SPOTTED acompana, escucha, amplifica, eleva, se adapta, documenta y crea junto con el artista. No comunica que descubre artistas ni promete fama futura.
 
 ## Stack
 
-- Next.js 15
-- TypeScript
-- App Router
-- Tailwind CSS
-- Framer Motion
-- lucide-react
-- Frontend forms with basic validation
-- Supabase-ready submission layer
-- Vercel-ready configuration
+- Next.js 15, App Router, React 19 y TypeScript.
+- Tailwind CSS con tokens de marca.
+- Framer Motion usado de forma puntual y con `prefers-reduced-motion`.
+- lucide-react para iconografia funcional.
+- Formularios via route handler y Supabase REST.
+- Contenido local tipado listo para migrar a CMS.
 
-## Local Development
+## Rutas
+
+- `/` Home editorial con hero, ultima sesion, valores, sesiones, artistas, colaboradores, hospitalidad, equipo y marcas.
+- `/sessions` Archivo de sesiones con estados `published`, `upcoming` y `draft`.
+- `/sessions/[slug]` Ficha individual con video placeholder, fotos, creditos, musicos, audio, marcas y metadata dinamica.
+- `/about` Manifiesto, El Cuarto de Atras, valores y equipo.
+- `/join` Formularios para artistas y colaboradores.
+- `/brands` Propuesta y formulario para marcas.
+- `/events` Redirige a `/sessions` por compatibilidad con la ruta legacy.
+
+## Desarrollo
 
 ```bash
 npm install
 npm run dev
-```
-
-Open:
-
-```txt
-http://localhost:3000
-```
-
-## Scripts
-
-```bash
 npm run lint
 npm run typecheck
+npm run test
 npm run build
-npm run start
 ```
 
-## Project Structure
+La app local corre en `http://localhost:3000`.
 
-```txt
-app/
-  icon.svg
-  layout.tsx
-  manifest.ts
-  page.tsx
-components/
-  application-form.tsx
-  artists-section.tsx
-  brands-section.tsx
-  collaborators-section.tsx
-  fade-in.tsx
-  footer.tsx
-  header.tsx
-  hero.tsx
-  manifesto.tsx
-  philosophy-section.tsx
-  role-card.tsx
-  section-heading.tsx
-  sessions-section.tsx
-  team-section.tsx
-  what-we-do.tsx
-docs/
-  audit-and-plan-preview.md
-  vercel-preview-checklist.md
-lib/
-  constants.ts
-  submissions.ts
-  types.ts
-public/
-  spotted-session-hero.png
-styles/
-  globals.css
-```
-
-## Landing Sections
-
-- Hero
-- Manifiesto
-- Qué hacemos
-- Para artistas
-- Join SPOTTED / colaboradores
-- Marcas y patrocinadores
-- Equipo actual
-- Sesiones futuras
-- Filosofía final
-- Footer
-
-## Forms
-
-The app includes three separate frontend forms:
-
-- Artist applications
-- Collaborator applications
-- Brand inquiries
-
-The reusable form component lives in `components/application-form.tsx`. Field configuration lives in `lib/constants.ts`.
-
-The current submission handler is simulated in `lib/submissions.ts`. It is structured so it can later be replaced with Supabase inserts.
-
-Recommended Supabase tables:
-
-- `artist_applications`
-- `collaborator_applications`
-- `brand_inquiries`
-
-Environment variables are prepared in `.env.example`:
+## Variables
 
 ```bash
+NEXT_PUBLIC_SITE_URL=http://localhost:3000
 NEXT_PUBLIC_SUPABASE_URL=
 NEXT_PUBLIC_SUPABASE_ANON_KEY=
 ```
 
-When moving from mock submissions to real storage, replace `submitApplication` in `lib/submissions.ts` with a server-side route or server action that inserts into the right table based on `submissionTableByKind`.
+`SUPABASE_SERVICE_ROLE_KEY` no es necesaria para el MVP porque los inserts se hacen desde un route handler usando anon key y RLS con politicas de insert.
 
-## SEO and Sharing
+## Supabase
 
-Metadata is configured in `app/layout.tsx`:
+1. Crear un proyecto en Supabase.
+2. Ejecutar `supabase/schema.sql` en el SQL editor.
+3. Copiar `NEXT_PUBLIC_SUPABASE_URL` y `NEXT_PUBLIC_SUPABASE_ANON_KEY`.
+4. Agregar esas variables en `.env.local` y en Vercel.
+5. Probar un formulario desde `/join` o `/brands`.
 
-- Title
-- Description
-- Canonical URL
-- Open Graph
-- Twitter card
-- Manifest
-- Icon
+Si las variables no existen, los formularios validan campos pero devuelven un mensaje claro de configuracion en desarrollo. No se simula guardado.
 
-Before production, update `metadataBase` with the final domain.
+## Contenido
 
-## Deploy to Vercel
+- Las sesiones viven en `content/sessions.json`.
+- Los valores, equipo y roles viven en `content/site.ts`.
+- Los tipos viven en `lib/types.ts`.
 
-The repository is ready for Vercel preview.
+Para agregar una sesion:
 
-1. Import the GitHub repo in Vercel.
-2. Select the Next.js preset.
-3. Use Node.js 22 if prompted.
-4. Build command: `npm run build`.
-5. Install command: `npm install`.
-6. Deploy.
+1. Duplicar un objeto en `content/sessions.json`.
+2. Asignar `id`, `slug`, `status`, `date`, artista, track, imagen y creditos.
+3. Usar `placeholder: true` hasta que el contenido sea real.
+4. Reemplazar imagenes por assets autorizados en `public/images`.
+5. Ejecutar `npm run typecheck && npm run test && npm run build`.
 
-The optional `vercel.json` keeps preview settings explicit.
+## Equipo y roles
 
-## Production Notes
+- Equipo actual: editar `teamMembers` en `content/site.ts`.
+- Roles de colaboracion: editar `collaborationRoles` en `content/site.ts`.
+- Los roles ocupados no se presentan como cerrados permanentemente; solo como cubiertos ahora.
 
-Recommended next steps before collecting real submissions:
+## Branding
 
-- Connect Supabase with server-side form handling.
-- Add spam protection or rate limiting for public forms.
-- Add privacy/contact language near forms.
-- Replace session placeholders with real artists, credits, photos, video, and partner brands.
-- Add the final domain to `metadataBase`.
-- Add analytics only after deciding what matters to measure.
+Los placeholders viven en:
+
+- `public/brand/spotted-isotype.svg`
+- `public/brand/spotted-wordmark.svg`
+- `public/brand/spotted-lockup.svg`
+
+Las rutas estan centralizadas en `lib/brand.ts`. Cuando llegue el logo final, reemplazar esos SVG sin cambiar componentes.
+
+## Deploy
+
+El objetivo de despliegue es Vercel. Este proyecto no depende de GitHub Pages; `sebhesp.github.io/spotted-sessions-mx/` puede seguir en 404 si Pages no esta configurado como sitio estatico.
+
+Ver `docs/vercel-deployment.md` para pasos exactos.
+
+## Limitaciones conocidas
+
+- Sesiones, artistas, fotos, videos y marcas son placeholder.
+- Supabase requiere variables reales para guardar formularios.
+- No hay CMS todavia; el modelo local esta preparado para migracion.
+- No hay remote Git configurado en este checkout local, por lo que el PR requiere conectar `origin`.

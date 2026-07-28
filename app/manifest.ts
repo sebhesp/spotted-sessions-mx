@@ -2,18 +2,17 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "SPOTTED Sessions MX",
+    name: "SPOTTED Sessions",
     short_name: "SPOTTED",
-    description:
-      "Sesiones musicales en vivo para artistas emergentes, construidas con intención, comunidad, hospitalidad y cuidado por los detalles.",
+    description: "Sesiones musicales intimas en Mexico.",
     start_url: "/",
     display: "standalone",
-    background_color: "#141311",
-    theme_color: "#173827",
+    background_color: "#0F0F0E",
+    theme_color: "#0F0F0E",
     icons: [
       {
         src: "/icon.svg",
-        sizes: "any",
+        sizes: "64x64",
         type: "image/svg+xml",
       },
     ],

@@ -2,6 +2,7 @@ import type { NextConfig } from "next";
 
 const isGitHubPages = process.env.GITHUB_ACTIONS === "true";
 const repositoryName = "spotted-sessions-mx";
+const basePath = isGitHubPages ? `/${repositoryName}` : "";
 
 const nextConfig: NextConfig = {
   poweredByHeader: false,
@@ -10,8 +11,11 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: isGitHubPages ? `/${repositoryName}` : "",
-  assetPrefix: isGitHubPages ? `/${repositoryName}/` : "",
+  basePath,
+  assetPrefix: basePath,
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+  },
 };
 
 export default nextConfig;

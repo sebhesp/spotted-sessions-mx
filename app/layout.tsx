@@ -2,8 +2,11 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
+import { withBasePath } from "@/lib/paths";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const socialImage = withBasePath("/images/back-room-hero.webp");
+const icon = withBasePath("/icon.svg");
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -26,7 +29,7 @@ export const metadata: Metadata = {
       "Sesiones musicales intimas en Mexico. When no one's watching... Spotted.",
     images: [
       {
-        url: "/images/back-room-hero.webp",
+        url: socialImage,
         width: 1536,
         height: 1024,
         alt: "Cuarto privado preparado como escenario intimo para SPOTTED Sessions.",
@@ -37,10 +40,10 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SPOTTED Sessions",
     description: "When no one's watching... Spotted.",
-    images: ["/images/back-room-hero.webp"],
+    images: [socialImage],
   },
   icons: {
-    icon: "/icon.svg",
+    icon,
   },
 };
 

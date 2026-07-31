@@ -1,7 +1,19 @@
 import sessionsData from "@/content/sessions.json";
+import { withBasePath } from "@/lib/paths";
 import type { Role, Session, TeamMember } from "@/lib/types";
 
-export const sessions = sessionsData as Session[];
+export const sessions = (sessionsData as Session[]).map((session) => ({
+  ...session,
+  image: withBasePath(session.image),
+  video: {
+    ...session.video,
+    poster: withBasePath(session.video.poster),
+  },
+  photos: session.photos.map((photo) => ({
+    ...photo,
+    src: withBasePath(photo.src),
+  })),
+}));
 
 export const values = [
   {

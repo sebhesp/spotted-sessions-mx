@@ -1,7 +1,9 @@
+import { withBasePath } from "@/lib/paths";
+
 export const brandAssets = {
-  isotype: "/brand/spotted-isotype.svg",
-  wordmark: "/brand/spotted-wordmark.svg",
-  lockup: "/brand/spotted-lockup.svg",
+  isotype: withBasePath("/brand/spotted-isotype.svg"),
+  wordmark: withBasePath("/brand/spotted-wordmark.svg"),
+  lockup: withBasePath("/brand/spotted-lockup.svg"),
 } as const;
 
 export const brandCopy = {

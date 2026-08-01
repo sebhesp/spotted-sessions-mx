@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { sessions } from "@/content/site";
 
-const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "https://spottedsessions.com").replace(/\/$/, "");
 
 export const dynamic = "force-static";
 

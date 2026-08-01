@@ -38,7 +38,7 @@ export default function Home() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "SPOTTED Sessions",
-    url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+    url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://spottedsessions.com",
     slogan: brandCopy.tagline,
   };
 

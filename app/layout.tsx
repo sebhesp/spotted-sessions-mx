@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { Header } from "@/components/Header";
 import { brandAssets } from "@/lib/brand";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://spottedsessions.com";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

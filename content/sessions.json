@@ -1,0 +1,147 @@
+[
+  {
+    "id": "SS-001",
+    "slug": "luna-lumbre-casa-abierta",
+    "status": "published",
+    "featured": true,
+    "date": "2026-06-21",
+    "location": "Ciudad de México",
+    "city": "Ciudad de México",
+    "format": "Bolero acústico / voz, guitarra, percusión mínima",
+    "year": "2026",
+    "artist": {
+      "name": "Luna Lumbre",
+      "city": "Ciudad de México",
+      "bio": "Proyecto placeholder construido para mostrar cómo vive una artista dentro del archivo. Su lenguaje mezcla bolero, canción nocturna y arreglos íntimos.",
+      "links": []
+    },
+    "track": {
+      "title": "Casa abierta",
+      "duration": "03:42",
+      "description": "Una pieza de muestra para validar dirección editorial, créditos, fotografía y video antes de publicar material autorizado."
+    },
+    "summary": "Una sesión íntima de muestra: voz al frente, cuarto en silencio y una producción que se mueve alrededor de la canción.",
+    "description": "El Cuarto de Atrás se prepara como una portada editorial en movimiento. Pocas personas, luz cálida, una mesa sencilla y la cámara lo bastante cerca para escuchar el gesto sin invadirlo.",
+    "image": "/images/back-room-hero.webp",
+    "imageAlt": "Cuarto privado preparado como escenario íntimo para una sesión musical.",
+    "video": {
+      "poster": "/images/back-room-hero.webp",
+      "caption": "Video placeholder. Sustituir por embed o archivo autorizado cuando exista la sesión final."
+    },
+    "photos": [
+      {
+        "src": "/images/back-room-hero.webp",
+        "alt": "Luz cálida sobre el cuarto antes de iniciar una sesión placeholder."
+      },
+      {
+        "src": "/images/back-room-hero.webp",
+        "alt": "Detalle del espacio preparado para una producción audiovisual íntima."
+      },
+      {
+        "src": "/images/back-room-hero.webp",
+        "alt": "Vista editorial del Cuarto de Atrás como escenario temporal."
+      }
+    ],
+    "credits": [
+      {
+        "area": "Dirección creativa",
+        "name": "Equipo SPOTTED"
+      },
+      {
+        "area": "Video",
+        "name": "Equipo SPOTTED"
+      },
+      {
+        "area": "Audio",
+        "name": "Equipo SPOTTED"
+      },
+      {
+        "area": "Fotografía",
+        "name": "Equipo SPOTTED"
+      },
+      {
+        "area": "Hospitalidad",
+        "name": "Equipo SPOTTED"
+      }
+    ],
+    "musicians": ["Voz placeholder", "Guitarra placeholder", "Percusión mínima placeholder"],
+    "hospitality": "Mesa sencilla, agua, café, comida caliente y un espacio de espera cuidado para artista y equipo.",
+    "brandPartners": [],
+    "audioNotes": "Captura multipista pendiente de reemplazo por ficha técnica real.",
+    "placeholder": true
+  },
+  {
+    "id": "SS-002",
+    "slug": "bruma-norte-senal",
+    "status": "upcoming",
+    "featured": false,
+    "date": "2026-09-18",
+    "location": "Ciudad de México",
+    "city": "Ciudad de México",
+    "format": "Trío acústico / voz, requinto, contrabajo",
+    "year": "2026",
+    "artist": {
+      "name": "Bruma Norte",
+      "city": "Monterrey",
+      "bio": "Perfil temporal para una sesión futura. No representa a una persona o proyecto real.",
+      "links": []
+    },
+    "track": {
+      "title": "Señal",
+      "duration": "04:08",
+      "description": "Canción pendiente de confirmar con el artista."
+    },
+    "summary": "Sesión futura en planeación para mostrar el estado upcoming dentro del archivo.",
+    "description": "Entrada de planeación para enseñar cómo aparece una sesión antes de liberar video, foto y créditos finales.",
+    "image": "/images/back-room-hero.webp",
+    "imageAlt": "Cuarto preparado con luces cálidas antes de una sesión futura.",
+    "video": {
+      "poster": "/images/back-room-hero.webp",
+      "caption": "Video aún no disponible."
+    },
+    "photos": [],
+    "credits": [],
+    "musicians": [],
+    "hospitality": "Hospitalidad definida por producción.",
+    "brandPartners": [],
+    "audioNotes": "Requerimientos técnicos por confirmar.",
+    "placeholder": true
+  },
+  {
+    "id": "SS-003",
+    "slug": "archivo-sur-antes-de-irse",
+    "status": "draft",
+    "featured": false,
+    "date": "2026-10-02",
+    "location": "Ciudad de México",
+    "city": "Ciudad de México",
+    "format": "Formato flexible / arreglo por definir",
+    "year": "2026",
+    "artist": {
+      "name": "Archivo Sur",
+      "city": "Por confirmar",
+      "bio": "Borrador interno para probar el estado draft dentro del modelo de contenido.",
+      "links": []
+    },
+    "track": {
+      "title": "Antes de irse",
+      "duration": "Por confirmar",
+      "description": "Contenido editorial pendiente."
+    },
+    "summary": "Borrador visible como ejemplo de arquitectura editorial de largo plazo.",
+    "description": "Ficha de muestra para preparar el flujo editorial antes de publicar nuevas sesiones.",
+    "image": "/images/back-room-hero.webp",
+    "imageAlt": "Escenario íntimo sin artista visible usado como placeholder editorial.",
+    "video": {
+      "poster": "/images/back-room-hero.webp",
+      "caption": "Material en borrador."
+    },
+    "photos": [],
+    "credits": [],
+    "musicians": [],
+    "hospitality": "Por definir.",
+    "brandPartners": [],
+    "audioNotes": "Por definir.",
+    "placeholder": true
+  }
+]
